@@ -1,6 +1,6 @@
 <div class="navigation">
     <div class="navigation_name">
-        <p>Jalol ohanglari</p>
+        <p>Sulaymon ohanglari</p>
     </div>
     <div class="navigation_line"></div>
     <div class="navigation_links">
@@ -15,7 +15,7 @@
     </div>
     <form action="{{ route('logout') }}" method="POST" style="display: inline; background: whitesmoke">
         @csrf
-        <button type="submit">Chiqish</button>
+        <button class="btn-exit" type="submit">Chiqish</button>
     </form>
     <div class="navigation_line"></div>
     @role('user')
@@ -33,10 +33,11 @@
                             <a href="#" onclick="playMusic('{{ asset('storage/' . $music->file) }}')">
                                 <i class="fa-brands fa-soundcloud"></i> {{ $music->name }} - {{ $music->artist }}
                             </a>
+                            <button onclick="showDeletePopup('{{ route('music.destroy', $music->id) }}')" class="ranked-list__delete">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </div>
-                        <button onclick="showDeletePopup('{{ route('music.destroy', $music->id) }}')" class="ranked-list__delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+
                     @endforeach
                 </div>
                 {{--                 Uncomment this when you want to enable the delete button--}}

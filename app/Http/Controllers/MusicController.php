@@ -21,7 +21,7 @@ class MusicController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
-            'file' => 'required|file|mimes:mp3,wav,aac|max:2048'
+            'file' => 'required|file|mimes:mp3,wav,aac'
         ]);
 
         // Store the uploaded file

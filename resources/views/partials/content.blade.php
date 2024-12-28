@@ -16,14 +16,6 @@
         </div>
     </div>
     <div class="content_playlist">
-        <div class="content_playlist-list">
-            <ul>
-                <li class="active">All Songs</li>
-                <li>Popular</li>
-                <li>Albums</li>
-                <li>Singles</li>
-            </ul>
-        </div>
         <div class="content_playlist-songs" id="song-list">
             @include('partials.song-list')
         </div>

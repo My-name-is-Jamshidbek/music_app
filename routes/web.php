@@ -21,11 +21,14 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout')
     ->middleware('auth');
 
+Route::get('/music/search', [UserController::class, 'search'])->name('music.search')
+    ->middleware('auth');
+
+
 // User Routes
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user-home', [UserController::class, 'index'])->name('user.home');
     Route::get('/music', [MusicController::class, 'index'])->name('music.index');
-    Route::get('/music/search', [UserController::class, 'search'])->name('music.search');
     Route::post('/music', [MusicController::class, 'store'])->name('music.store');
     Route::delete('/music/{id}', [MusicController::class, 'destroy'])->name('music.destroy');
     Route::post('/music/{music}/like', [LikedMusicController::class, 'like'])->name('music.like');
@@ -36,6 +39,5 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-home', [AdminController::class, 'index'])->name('admin.home');
-    Route::get('/music/search', [UserController::class, 'search'])->name('music.search');
 });
 
